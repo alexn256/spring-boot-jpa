@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!-- create sequences -->
+    <changeSet author="user (generated)" id="1616944771363-1">
+        <createSequence sequenceName="artist_artist_id_seq"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-2">
+        <createSequence sequenceName="comment_comment_id_seq"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-3">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-4">
+        <createSequence sequenceName="imdb_imdb_id_seq"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-5">
+        <createSequence sequenceName="movie_movie_id_seq"/>
+    </changeSet>
+    <!-- create tables -->
+    <changeSet author="user (generated)" id="1616944771363-6">
+        <createTable tableName="artist">
+            <column autoIncrement="true" name="artist_id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="artist_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-7">
+        <createTable tableName="artist_movie">
+            <column name="artist_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-8">
+        <createTable tableName="comment">
+            <column autoIncrement="true" name="comment_id" type="BIGSERIAL">
+                <constraints nullable="false"/>
+            </column>
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_text" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_date" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-9">
+        <createTable tableName="country">
+            <column name="movie_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="country_code" type="VARCHAR(3)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-10">
+        <createTable tableName="imdb">
+            <column autoIncrement="true" name="imdb_id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="imdb_pkey"/>
+            </column>
+            <column name="rating" type="FLOAT8">
+                <constraints nullable="false"/>
+            </column>
+            <column name="votes" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-11">
+        <createTable tableName="movie">
+            <column autoIncrement="true" name="movie_id" type="BIGSERIAL">
+                <constraints primaryKey="true" primaryKeyName="movie_pkey"/>
+            </column>
+            <column name="title" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="plot" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="runtime" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="imdb_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-12">
+        <createTable tableName="user">
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <!-- create constraints -->
+    <changeSet author="user (generated)" id="1616944771363-13">
+        <addPrimaryKey columnNames="artist_id, movie_id" constraintName="artist_movie_pkey" tableName="artist_movie"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-14">
+        <addPrimaryKey columnNames="comment_date" constraintName="comment_pkey" tableName="comment"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-15">
+        <addPrimaryKey columnNames="user_id" constraintName="user_pkey" tableName="user"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-16">
+        <addUniqueConstraint columnNames="imdb_id" constraintName="movie_imdb_id_key" tableName="movie"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-17">
+        <addUniqueConstraint columnNames="plot" constraintName="movie_plot_key" tableName="movie"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-18">
+        <addUniqueConstraint columnNames="email" constraintName="user_email_key" tableName="user"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-19">
+        <addForeignKeyConstraint baseColumnNames="artist_id" baseTableName="artist_movie" constraintName="fk_artist_movie_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="artist_id" referencedTableName="artist"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-20">
+        <addForeignKeyConstraint baseColumnNames="imdb_id" baseTableName="movie" constraintName="fk_imdb_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="imdb_id" referencedTableName="imdb"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-21">
+        <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="artist_movie" constraintName="fk_movie_artist_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="movie_id" referencedTableName="movie"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-22">
+        <addForeignKeyConstraint baseColumnNames="movie_id" baseTableName="comment" constraintName="fk_movie_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="movie_id" referencedTableName="movie"/>
+    </changeSet>
+    <changeSet author="user (generated)" id="1616944771363-23">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="comment" constraintName="fk_user_id" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="user_id" referencedTableName="user"/>
+    </changeSet>
+</databaseChangeLog>

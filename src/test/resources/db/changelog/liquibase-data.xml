@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!-- artist table data -->
+    <changeSet author="user (generated)" id="1617910603352-1">
+        <insert tableName="artist">
+            <column name="artist_id" valueNumeric="1001"/>
+            <column name="first_name" value="Keanu"/>
+            <column name="last_name" value="Reeves"/>
+        </insert>
+        <insert tableName="artist">
+            <column name="artist_id" valueNumeric="1002"/>
+            <column name="first_name" value="Laurence"/>
+            <column name="last_name" value="Fishburne"/>
+        </insert>
+    </changeSet>
+    <!-- country table data -->
+    <changeSet author="user (generated)" id="1617910603352-2">
+        <insert tableName="country">
+            <column name="movie_id" valueNumeric="301"/>
+            <column name="country_code" value="US"/>
+        </insert>
+        <insert tableName="country">
+            <column name="movie_id" valueNumeric="299"/>
+            <column name="country_code" value="US"/>
+        </insert>
+        <insert tableName="country">
+            <column name="movie_id" valueNumeric="316"/>
+            <column name="country_code" value="US"/>
+        </insert>
+        <insert tableName="country">
+            <column name="movie_id" valueNumeric="762738"/>
+            <column name="country_code" value="US"/>
+        </insert>
+        <insert tableName="country">
+            <column name="movie_id" valueNumeric="762738"/>
+            <column name="country_code" value="CH"/>
+        </insert>
+    </changeSet>
+    <!-- imdb table data -->
+    <changeSet author="user (generated)" id="1617910603352-3">
+        <insert tableName="imdb">
+            <column name="imdb_id" valueNumeric="133093"/>
+            <column name="rating" valueNumeric="8.7"/>
+            <column name="votes" valueNumeric="169158"/>
+        </insert>
+        <insert tableName="imdb">
+            <column name="imdb_id" valueNumeric="234215"/>
+            <column name="rating" valueNumeric="7.2"/>
+            <column name="votes" valueNumeric="519438"/>
+        </insert>
+        <insert tableName="imdb">
+            <column name="imdb_id" valueNumeric="2911666"/>
+            <column name="rating" valueNumeric="7.4"/>
+            <column name="votes" valueNumeric="544746"/>
+        </insert>
+        <insert tableName="imdb">
+            <column name="imdb_id" valueNumeric="242653"/>
+            <column name="rating" valueNumeric="6.8"/>
+            <column name="votes" valueNumeric="451168"/>
+        </insert>
+    </changeSet>
+    <!-- movie table data -->
+    <changeSet author="user (generated)" id="1617910603352-4">
+        <insert tableName="movie">
+            <column name="movie_id" valueNumeric="301"/>
+            <column name="title" value="The Matrix"/>
+            <column name="plot"
+                    value="When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence."/>
+            <column name="runtime" valueNumeric="136"/>
+            <column name="imdb_id" valueNumeric="133093"/>
+            <column name="year" valueNumeric="1999"/>
+        </insert>
+        <insert tableName="movie">
+            <column name="movie_id" valueNumeric="299"/>
+            <column name="title" value="The Matrix Reloaded"/>
+            <column name="plot"
+                    value="Freedom fighters Neo, Trinity and Morpheus continue to lead the revolt against the Machine Army, unleashing their arsenal of extraordinary skills and weaponry against the systematic forces of repression and exploitation."/>
+            <column name="runtime" valueNumeric="138"/>
+            <column name="imdb_id" valueNumeric="234215"/>
+            <column name="year" valueNumeric="2003"/>
+        </insert>
+        <insert tableName="movie">
+            <column name="movie_id" valueNumeric="316"/>
+            <column name="title" value="The Matrix Revolutions"/>
+            <column name="plot"
+                    value="The human city of Zion defends itself against the massive invasion of the machines as Neo fights to end the war at another front while also opposing the rogue Agent Smith."/>
+            <column name="runtime" valueNumeric="129"/>
+            <column name="imdb_id" valueNumeric="242653"/>
+            <column name="year" valueNumeric="2003"/>
+        </insert>
+        <insert tableName="movie">
+            <column name="movie_id" valueNumeric="762738"/>
+            <column name="title" value="John Wick"/>
+            <column name="plot"
+                    value="An ex-hit-man comes out of retirement to track down the gangsters that killed his dog and took everything from him."/>
+            <column name="runtime" valueNumeric="101"/>
+            <column name="imdb_id" valueNumeric="2911666"/>
+            <column name="year" valueNumeric="2014"/>
+        </insert>
+    </changeSet>
+    <!-- user table data -->
+    <changeSet author="user (generated)" id="1617910603352-5">
+        <insert tableName="user">
+            <column name="user_id" valueNumeric="1001"/>
+            <column name="first_name" value="Peter"/>
+            <column name="last_name" value="Parker"/>
+            <column name="email" value="realspiderman@marvel.com"/>
+            <column name="password" value="$2y$12$DhqHUxhE78NndKdHYNsksuSL0uStdrFLUSaLaKCqwTDjD7c0crLum"/>
+        </insert>
+        <insert tableName="user">
+            <column name="user_id" valueNumeric="1002"/>
+            <column name="first_name" value="Jack"/>
+            <column name="last_name" value="Smith"/>
+            <column name="email" value="smithj@yahoo.com"/>
+            <column name="password" value="$2y$12$BfVaybM7n4pBKBRnLjPTYu4tg3rjsj5Ddj7Erp95YS/G.mJ87O8yy"/>
+        </insert>
+        <insert tableName="user">
+            <column name="user_id" valueNumeric="1003"/>
+            <column name="first_name" value="Walter"/>
+            <column name="last_name" value="Peterson"/>
+            <column name="email" value="wpeterson@gmail.com"/>
+            <column name="password" value="$2y$12$KS9ranaG.Da9SnGEC6oYIuQkfLLn509JSQht5ZSzkSWSee8z.gzam"/>
+        </insert>
+        <insert tableName="user">
+            <column name="user_id" valueNumeric="1004"/>
+            <column name="first_name" value="Alex"/>
+            <column name="last_name" value="Snowden"/>
+            <column name="email" value="thesnowden@yahoo.com"/>
+            <column name="password" value="$2y$12$jWKTeODCJla/48xZ45.cruTp0NLBK2.tNlUKyjAWhmMVjQCOg1cLy"/>
+        </insert>
+        <insert tableName="user">
+            <column name="user_id" valueNumeric="1005"/>
+            <column name="first_name" value="Anna"/>
+            <column name="last_name" value="Green"/>
+            <column name="email" value="greenanna@yahoo.com"/>
+            <column name="password" value="$2y$12$mjXFAGgBzTMXxvzy/4Ze2eEXA.sYjuT/fkEdNJCufSYdw.WCGWqb2"/>
+        </insert>
+    </changeSet>
+    <!-- artist-movie table data -->
+    <changeSet author="user (generated)" id="1617910603352-6">
+        <insert tableName="artist_movie">
+            <column name="artist_id" valueNumeric="1001"/>
+            <column name="movie_id" valueNumeric="301"/>
+        </insert>
+        <insert tableName="artist_movie">
+            <column name="artist_id" valueNumeric="1001"/>
+            <column name="movie_id" valueNumeric="299"/>
+        </insert>
+        <insert tableName="artist_movie">
+            <column name="artist_id" valueNumeric="1001"/>
+            <column name="movie_id" valueNumeric="316"/>
+        </insert>
+        <insert tableName="artist_movie">
+            <column name="artist_id" valueNumeric="1001"/>
+            <column name="movie_id" valueNumeric="762738"/>
+        </insert>
+        <insert tableName="artist_movie">
+            <column name="artist_id" valueNumeric="1002"/>
+            <column name="movie_id" valueNumeric="301"/>
+        </insert>
+        <insert tableName="artist_movie">
+            <column name="artist_id" valueNumeric="1002"/>
+            <column name="movie_id" valueNumeric="299"/>
+        </insert>
+        <insert tableName="artist_movie">
+            <column name="artist_id" valueNumeric="1002"/>
+            <column name="movie_id" valueNumeric="316"/>
+        </insert>
+        <insert tableName="artist_movie">
+            <column name="artist_id" valueNumeric="1002"/>
+            <column name="movie_id" valueNumeric="762738"/>
+        </insert>
+    </changeSet>
+    <!-- comment table data -->
+    <changeSet author="user (generated)" id="1617910603352-7">
+        <insert tableName="comment">
+            <column name="comment_id" valueNumeric="1001"/>
+            <column name="movie_id" valueNumeric="301"/>
+            <column name="user_id" valueNumeric="1004"/>
+            <column name="comment_text" value="The Matrix is the great movie!!!"/>
+            <column name="comment_date" valueDate="2019-04-10 14:51:39.0"/>
+        </insert>
+        <insert tableName="comment">
+            <column name="comment_id" valueNumeric="1002"/>
+            <column name="movie_id" valueNumeric="301"/>
+            <column name="user_id" valueNumeric="1003"/>
+            <column name="comment_text" value="I like this film!)))"/>
+            <column name="comment_date" valueDate="2019-03-09 17:52:50.0"/>
+        </insert>
+        <insert tableName="comment">
+            <column name="comment_id" valueNumeric="1003"/>
+            <column name="movie_id" valueNumeric="301"/>
+            <column name="user_id" valueNumeric="1001"/>
+            <column name="comment_text" value="Сould have been better."/>
+            <column name="comment_date" valueDate="2019-08-25 17:12:49.0"/>
+        </insert>
+        <insert tableName="comment">
+            <column name="comment_id" valueNumeric="1004"/>
+            <column name="movie_id" valueNumeric="299"/>
+            <column name="user_id" valueNumeric="1004"/>
+            <column name="comment_text" value="The first film was better."/>
+            <column name="comment_date" valueDate="2019-06-01 12:20:30.0"/>
+        </insert>
+        <insert tableName="comment">
+            <column name="comment_id" valueNumeric="1005"/>
+            <column name="movie_id" valueNumeric="316"/>
+            <column name="user_id" valueNumeric="1004"/>
+            <column name="comment_text" value="No comments..."/>
+            <column name="comment_date" valueDate="2019-10-07 15:17:42.0"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

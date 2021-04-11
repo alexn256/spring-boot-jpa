@@ -19,6 +19,7 @@
         <java.version>11</java.version>
         <lombok.version>1.18.18</lombok.version>
         <javax.verson>2.0.1.Final</javax.verson>
+        <jupiter.version>5.7.0</jupiter.version>
     </properties>
     <dependencies>
         <dependency>
@@ -39,6 +40,14 @@
             <artifactId>postgresql</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
@@ -49,12 +58,26 @@
             <artifactId>validation-api</artifactId>
             <version>${javax.verson}</version>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -1,12 +1,15 @@
 package com.persistence.model;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
@@ -17,9 +20,14 @@ import java.util.Set;
 /**
  * The User POJO class.
  */
-@Data
+@Getter
+@Setter
 @Entity
-@Table(name = "\"user\"")
+@Table(name = "user")
+@NamedEntityGraph(name = "user-graph",
+        attributeNodes = {
+                @NamedAttributeNode("comments")
+        })
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

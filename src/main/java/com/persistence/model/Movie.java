@@ -1,19 +1,22 @@
 package com.persistence.model;
 
-
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedAttributeNode;
+import javax.persistence.NamedEntityGraph;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -24,20 +27,27 @@ import java.util.Set;
 /**
  * The Movie POJO class.
  */
-@Data
+@Getter
+@Setter
 @Entity
 @Table(name = "MOVIE")
+@NamedEntityGraph(name = "movie-graph",
+        attributeNodes = {
+                @NamedAttributeNode("imdb"),
+                @NamedAttributeNode("countries"),
+                @NamedAttributeNode("cast")
+        })
 public class Movie implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "MOVIE_ID")
-    private long id;
+    private long movieId;
     @NotNull
-    @Column(name = "MOVIE_NAME")
-    private String name;
+    @Column(name = "title")
+    private String title;
     @Column(name = "PLOT", unique = true)
     private String plot;
-    @ElementCollection(targetClass=Country.class)
+    @ElementCollection(targetClass = Country.class)
     @Enumerated(EnumType.STRING)
     @JoinTable(name = "COUNTRY", joinColumns = @JoinColumn(name = "MOVIE_ID"))
     @Column(name = "COUNTRY_CODE", nullable = false)
@@ -45,7 +55,10 @@ public class Movie implements Serializable {
     @NotNull
     @Column(name = "RUNTIME")
     private int runtime;
-    @ManyToMany(mappedBy = "movies")
+    @NotNull
+    @Column(name = "YEAR")
+    private int year;
+    @ManyToMany(mappedBy = "movies", fetch = FetchType.LAZY)
     private Set<Artist> cast;
     @OneToMany(mappedBy = "movie")
     private Set<Comment> comments;

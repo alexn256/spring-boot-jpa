@@ -34,5 +34,10 @@ public enum Country {
     /**
      * Ukraine.
      */
-    UK
+    UK,
+
+    /**
+     * China.
+     */
+    CH
 }
